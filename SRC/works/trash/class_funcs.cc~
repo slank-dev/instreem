@@ -1,0 +1,54 @@
+#include "head/instreem.h"
+
+Project::Project(string pname){
+	cout << "constracter of ProjectClass" << endl;
+	name = pname;
+	pjct_number = 10;
+}
+
+void Project::info(){
+	cout << "name: " << name << endl;
+	cout << "num : " << pjct_number << endl;
+}
+
+
+
+instreem_info::instreem_info(){
+	string path = getenv("HOME");
+	path += "/.instreemrc";
+	FILE *fp;
+	char line_buf[256];
+
+	if((fp = fopen(path.c_str(), "r") )==NULL){
+		perror("instreemrc open error");
+	}else{
+		for(char c=fgetc(fp); c!=EOF; c=fgetc(fp)){
+			memset(line_buf, 0, sizeof(line_buf));
+			for(int i=0; c!='\n'; c=fgetc(fp), i++){
+				line_buf[i] = c; 
+			}
+			
+			//scan PROJECT_ROOT
+			if(strncmp(line_buf, "PROJECT_ROOT", strlen("PROJECT_ROOT")) == 0){
+				_project_root = (line_buf+strlen("PROJECT_ROOT")+1);
+			}
+			
+
+			//scan DOCUMENT_ROOT
+			if(strncmp(line_buf, "DOCUMENT_ROOT", strlen("DOCUMENT_ROOT")) == 0){
+				_document_root = (line_buf+strlen("DOCUMENT_ROOT")+1);
+			}
+
+			//scan MODULE_ROOT
+			if(strncmp(line_buf, "MODULE_ROOT", strlen("MODULE_ROOT")) == 0){
+				_module_root = (line_buf+strlen("MODULE_ROOT")+1);
+			}
+
+		}
+
+
+	}//end else
+
+	
+}
+

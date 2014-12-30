@@ -1,0 +1,12 @@
+
+Command Help
+ [*] make [project] 
+ [*] rename [oldname] [newname]
+ [*] delete [project]
+ [*] info [project]	
+ [*] dsrc [project] [srcname]
+ [*] dedit [project]
+ [*] load [project] [new|late|other]
+ [*] view
+ [*] exit 	
+ [*] help 	
