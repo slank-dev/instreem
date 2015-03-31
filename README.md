@@ -1,5 +1,5 @@
-###instreem 
-====
-Development support tool 
-Project management and edit
+##instreem 
 
+ソフトウェアなどの対話型バージョン管理システム
+
+http://slankdev.net/instreem
